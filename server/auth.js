@@ -18,6 +18,10 @@ export async function handleLogin(req, res) {
   } else {
     const claims = { sub: username };
     const token = jwt.sign(claims, secret);
-    res.json({ token });  
+    res.json({ token });
   }
+}
+
+export function decodeToken(token) {
+  return jwt.verify(token, secret);
 }
